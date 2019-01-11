@@ -20,7 +20,7 @@
 #
 ##############################################################################
 
-from odoo.addons.web.controllers.main import ReportController,Reports, serialize_exception
+from odoo.addons.web.controllers.main import ReportController
 from odoo import http
 
 class PreviewReportController(ReportController):
@@ -32,11 +32,4 @@ class PreviewReportController(ReportController):
         return result
 
 
-class PreviewReports(Reports):
 
-    @http.route('/web/report', type='http', auth="user")
-    @serialize_exception
-    def index(self, action, token):
-        result = super(PreviewReports, self).index(action, token)
-        result.headers['Content-Disposition'] = result.headers['Content-Disposition'].replace('attachment', 'inline')
-        return result
