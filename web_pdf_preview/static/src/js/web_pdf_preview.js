@@ -58,6 +58,7 @@ session.get_file = function(options) {
             options.complete();
         }
     }
+    return 1;
 };
 
 });
